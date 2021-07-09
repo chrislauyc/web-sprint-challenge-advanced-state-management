@@ -13,4 +13,9 @@ The store is a single source of truth because it is a central object where globa
 
 3. What does `redux-thunk` allow us to do? How does it change our `action-creators`?
 
+It is a middleware between action creator and the store. 
+It allows async dispatch of actions. Redux thunk can either receive an action object or a callback. When the thunk receives an action object, it will pass it to the store unchanged. However, when a callback is passed to the thunk, the callback will be called with dispatch passed as an argument. Any async logic can be executed is the callback and a new action object can be created and dispatched. 
+
 4. What is your favorite state management system you've learned and this sprint? Please explain why!
+
+For code organization, I like redux better. 
