@@ -1,8 +1,47 @@
-
+import {
+    FETCHING,
+    FETCH_SUCCESSFUL,
+    FETCH_FAILED,
+    ADD_SMURF,
+    SET_ERROR
+} from '../actions/actionTypes';
 export const initialState = {
+    smurfs:[],
+    isLoading:false,
+    errorMsg:''
 }
 
-const reducer = ()=>{
+const reducer = (state=initialState,action)=>{
+    switch(action.type){
+        case FETCHING:
+            return {
+                ...state,
+                isLoading:true
+            };
+        case FETCH_SUCCESSFUL:
+            return {
+                ...state,
+                smurfs:action.payload,
+                isLoading:false
+            };
+        case FETCH_FAILED:
+            return {
+                ...state,
+                isLoading:false
+            };
+        case ADD_SMURF:
+            return {
+                ...state,
+                smurfs:[...state.smurfs,action.payload]
+            };
+        case SET_ERROR:
+            return {
+                ...state,
+                errorMsg:action.payload
+            };
+        default:
+            return state;
+    }
 }
 
 export default reducer;
